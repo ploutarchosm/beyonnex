@@ -1,0 +1,71 @@
+$wrap-size: 120px;
+$gauge-size: calc(#{$wrap-size} / 2);
+$temp-main-bg: hsl(0, 0%, 91%);
+$fiftyPercent: 50%;
+$hundredPercent: calc(#{$fiftyPercent} * 2);
+
+.temp {
+  background-color: $temp-main-bg;
+  width: $wrap-size;
+  height: calc(#{$wrap-size} + 20px);
+  &__gauge {
+    position: relative;
+    background: var(--bs-white);
+    border: 0.05em solid var(--bs-gray-700);
+    border-radius: $fiftyPercent;
+    width: $gauge-size;
+    height: $gauge-size;
+    min-width: $gauge-size;
+    min-height: $gauge-size;
+    &--values {
+      position: absolute;
+      width: $hundredPercent;
+      height: $hundredPercent;
+      top: 0;
+      left: 0;
+      .min,
+      .max {
+        position: relative;
+        left: 0;
+        top: $fiftyPercent;
+        width: $hundredPercent;
+        height: 1%;
+        margin-bottom: -1%;
+        background: linear-gradient(
+          90deg,
+          rgba(2, 0, 36, 0) 0,
+          rgba(0, 0, 0, 0) 4%,
+          #000 4%,
+          #000 15%,
+          rgba(0, 0, 0, 0) 15%
+        );
+      }
+      .min {
+        transform: rotate(-45deg);
+      }
+      .max {
+        transform: rotate(225deg);
+      }
+    }
+    &--pointer {
+      transform: rotate(
+        calc(270deg * calc(var(--gauge-value, 0deg) / 100) - 45deg)
+      );
+      background: #000;
+      position: relative;
+      left: 0;
+      top: $fiftyPercent;
+      width: $hundredPercent;
+      height: 2%;
+      margin-bottom: -4%;
+      background: linear-gradient(
+        90deg,
+        rgba(2, 0, 36, 0) 0,
+        rgba(0, 0, 0, 0) 13%,
+        #000 13%,
+        #000 30%,
+        rgba(0, 0, 0, 0) 50%
+      );
+    }
+  }
+}

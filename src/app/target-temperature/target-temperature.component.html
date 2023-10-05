@@ -1,0 +1,14 @@
+<div
+  class="temp d-flex flex-column align-items-center justify-content-center gap-1">
+  <div class="temp__gauge" [ngStyle]="{ '--gauge-value': indicatorPos }">
+    <div class="temp__gauge--values">
+      <div class="min"></div>
+      <div class="max"></div>
+    </div>
+    <div class="temp__gauge--pointer"></div>
+  </div>
+  <div class="temp__value">
+    <span>{{ currentTemp }}</span>
+    <span>&#8451;</span>
+  </div>
+</div>
